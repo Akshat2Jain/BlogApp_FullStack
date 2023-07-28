@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const colors = require("colors");
-
+const cors = require("cors");
 //dotenv config
 dotenv.config();
 
-// converting body to json
+// middleware
 app.use(express.json());
+app.use(cors());
 
 // db config
 
