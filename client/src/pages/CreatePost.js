@@ -47,7 +47,7 @@ const CreatePost = () => {
             <label>Title:</label>
 
             <Field id="inputCreatePost" name="title" placeholder="Title" />
-            <ErrorMessage name="title" component="span" />
+            <ErrorMessage name="title" component="p" />
             <label>Blog Description:</label>
 
             <Field
@@ -55,11 +55,11 @@ const CreatePost = () => {
               name="postDescription"
               placeholder="Title"
             />
-            <ErrorMessage name="postDescription" component="span" />
+            <ErrorMessage name="postDescription" component="p" />
             <label>Author:</label>
 
             <Field id="inputCreatePost" name="username" placeholder="Title" />
-            <ErrorMessage name="username" component="span" />
+            <ErrorMessage name="username" component="p" />
             <button type="submit">Create Blog</button>
           </Form>
         </Formik>

@@ -23,10 +23,11 @@ const Home = () => {
     <>
       <div className="App">
         <h1>List of Blogs</h1>
-        {listofPosts.map((post) => {
+        {listofPosts.map((post, key) => {
           return (
             <>
               <div
+                key={key}
                 className="post"
                 onClick={() => {
                   navigate(`/post/${post.id}`);

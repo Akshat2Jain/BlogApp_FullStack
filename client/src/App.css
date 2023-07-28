@@ -3,7 +3,6 @@
   height: auto;
   display: flex;
   align-items: center;
-  padding-top: 40px;
   flex-direction: column;
 }
 
@@ -91,9 +90,10 @@ body {
   margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: rgb(84, 163, 212);
+  background-color: rgb(38, 118, 168);
   border-radius: 5px;
   color: white;
+  width: 500px;
 }
 
 .formContainer button:hover {
@@ -101,10 +101,11 @@ body {
   background-color: dodgerblue;
 }
 
-span {
+p {
   color: red;
-  padding-top: 1px;
 }
+
+/* NAVBAR */
 
 .navbar {
   width: 100%;
@@ -113,7 +114,6 @@ span {
   display: flex;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: -40px;
 }
 
 .navbar a {
@@ -123,7 +123,6 @@ span {
 }
 
 /* INDIVIDUAL POST */
-
 .postPage {
   display: flex;
   flex-direction: row;
@@ -143,6 +142,50 @@ span {
   height: calc(100vh - 70px);
   display: grid;
   place-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSide .addCommentContainer {
+  flex: 20%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-top: 25px;
+}
+
+.addCommentContainer input,
+button {
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+}
+
+.addCommentContainer button {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.addCommentContainer input {
+  border: 2px solid dodgerblue;
+}
+
+.rightSide .listOfComments {
+  flex: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listOfComments .comment {
+  width: 70%;
+  height: auto;
+  padding: 30px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 #individual {
