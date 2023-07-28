@@ -121,6 +121,12 @@ p {
   text-decoration: none;
   color: white;
 }
+.navbar button {
+  width: 150px;
+  height: 40px;
+  margin-left: 20px;
+  cursor: pointer;
+}
 
 /* INDIVIDUAL POST */
 .postPage {
@@ -165,6 +171,7 @@ button {
 .addCommentContainer button {
   background-color: dodgerblue;
   color: white;
+  cursor: pointer;
 }
 
 .addCommentContainer input {

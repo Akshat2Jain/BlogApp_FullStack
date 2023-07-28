@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // association Users can have many posts
-  Users.associate = (models) => {
-    Users.hasMany(models.Posts, {
-      onDelete: "cascade",
-    });
-  };
+  // Users.associate = (models) => {
+  //   Users.hasMany(models.Posts, {
+  //     onDelete: "cascade",
+  //   });
+  // };
 
-  return Posts;
+  return Users;
 };

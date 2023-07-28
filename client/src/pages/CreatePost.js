@@ -24,15 +24,30 @@ const CreatePost = () => {
 
   const addPost = async (data) => {
     try {
-      await axios.post("http://localhost:8080/posts", data);
-      message.success("Post Created");
-      navigate("/");
+      const res = await axios.post("http://localhost:8080/posts", data, {
+        headers: {
+          accessToken: localStorage.getItem("token"),
+        },
+      });
+      if (!res.data.success) {
+        message.error("Log in to Create Blog");
+      } else {
+        message.success("Post Created");
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       message.error("Something went wrong");
     }
   };
-  const onSubmit = (data) => {
+  const onSubmit = (data, { resetForm }) => {
+    resetForm({
+      initialValues: {
+        title: "",
+        postDescription: "",
+        username: "",
+      },
+    });
     addPost(data);
   };
   return (

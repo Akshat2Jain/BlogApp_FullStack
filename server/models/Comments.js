@@ -4,6 +4,10 @@ module.exports = (sequalize, Datatypes) => {
       type: Datatypes.STRING,
       allowNull: false,
     },
+    username: {
+      type: Datatypes.STRING,
+      allowNull: false,
+    },
   });
   return Comments;
 };

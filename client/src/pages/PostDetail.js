@@ -38,14 +38,29 @@ const PostDetail = () => {
       if (!newComment) {
         message.error("Comment Can not be empty");
       } else {
-        await axios.post("http://localhost:8080/comments", {
-          commentBody: newComment,
-          PostId: id,
-        });
-        message.success("Comment Added");
-        setNewCommet("");
-        const commentToAdd = { commentBody: newComment };
-        setCommentDetail([...commentDetail, commentToAdd]);
+        const res = await axios.post(
+          "http://localhost:8080/comments",
+          {
+            commentBody: newComment,
+            PostId: id,
+          },
+          {
+            headers: {
+              accessToken: localStorage.getItem("token"),
+            },
+          }
+        );
+        if (res.data.success) {
+          message.success("Comment Added");
+          setNewCommet("");
+          const commentToAdd = {
+            commentBody: newComment,
+            username: res.data.comment.username,
+          };
+          setCommentDetail([...commentDetail, commentToAdd]);
+        } else {
+          message.error("Login to comment");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -83,6 +98,7 @@ const PostDetail = () => {
                 <>
                   <div className="comment" key={key}>
                     {comment.commentBody}
+                    <label>By: {comment.username}</label>
                   </div>
                 </>
               );
