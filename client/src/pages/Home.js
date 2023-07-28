@@ -9,7 +9,7 @@ const Home = () => {
   const getPosts = async () => {
     try {
       const response = await axios.get("http://localhost:8080/posts");
-      console.log(response);
+      // console.log(response);
       setlistofPosts(response.data);
     } catch (error) {
       console.log(error);
@@ -22,8 +22,8 @@ const Home = () => {
   return (
     <>
       <div className="App">
-        <h1>List of Posts</h1>
-        {listofPosts.map((post, id) => {
+        <h1>List of Blogs</h1>
+        {listofPosts.map((post) => {
           return (
             <>
               <div

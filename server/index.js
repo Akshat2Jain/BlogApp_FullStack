@@ -17,6 +17,8 @@ const db = require("./models");
 // Routers
 const postRouter = require("./routes/Posts");
 app.use("/posts", postRouter);
+const commentRouter = require("./routes/Comments");
+app.use("/comments", commentRouter);
 
 port = process.env.PORT;
 

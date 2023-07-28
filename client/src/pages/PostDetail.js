@@ -20,7 +20,7 @@ const PostDetail = () => {
   };
   useEffect(() => {
     getDetails(id);
-  }, []);
+  }, [id]);
   return (
     <>
       <div className="postPage">
