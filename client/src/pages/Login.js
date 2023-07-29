@@ -24,7 +24,10 @@ const Login = () => {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const res = await axios.post("http://localhost:8080/auth/login", data);
+      const res = await axios.post(
+        "http://13.232.99.215:8080/auth/login",
+        data
+      );
       setLoading(false);
       if (!res.data.success) {
         message.error(res.data.message);

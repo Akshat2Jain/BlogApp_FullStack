@@ -18,11 +18,14 @@ const App = () => {
 
   const getUserInfo = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/auth/getUserInfo", {
-        headers: {
-          accessToken: localStorage.getItem("token"),
-        },
-      });
+      const res = await axios.get(
+        "http://13.232.99.215:8080/auth/getUserInfo",
+        {
+          headers: {
+            accessToken: localStorage.getItem("token"),
+          },
+        }
+      );
       setUsername(res.data.username);
     } catch (error) {
       console.log(error);

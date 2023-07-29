@@ -28,7 +28,7 @@ const CreatePost = () => {
     try {
       setLoading(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const res = await axios.post("http://localhost:8080/posts", data, {
+      const res = await axios.post("http://13.232.99.215:8080/posts", data, {
         headers: {
           accessToken: localStorage.getItem("token"),
         },

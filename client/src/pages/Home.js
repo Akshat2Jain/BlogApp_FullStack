@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
   const getPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/posts");
+      const response = await axios.get("http://13.232.99.215:8080/posts");
       // console.log(response);
       setlistofPosts(response.data);
     } catch (error) {

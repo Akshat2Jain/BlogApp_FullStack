@@ -16,7 +16,7 @@ const PostDetail = () => {
   const getDetails = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/posts/byId/${id}`
+        `http://13.232.99.215:8080/posts/byId/${id}`
       );
       setpostDetail(response.data);
     } catch (error) {
@@ -27,7 +27,7 @@ const PostDetail = () => {
   // get perticular blog comment
   const getComment = async () => {
     try {
-      const res = await axios.get(`http://localhost:8080/comments/${id}`);
+      const res = await axios.get(`http://13.232.99.215:8080/comments/${id}`);
       setCommentDetail(res.data);
       // console.log(res.data);
     } catch (error) {
@@ -41,7 +41,7 @@ const PostDetail = () => {
         message.error("Comment Can not be empty");
       } else {
         const res = await axios.post(
-          "http://localhost:8080/comments",
+          "http://13.232.99.215:8080/comments",
           {
             commentBody: newComment,
             PostId: id,
@@ -73,11 +73,14 @@ const PostDetail = () => {
   // delete comment
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8080/comments/${id}`, {
-        headers: {
-          accessToken: localStorage.getItem("token"),
-        },
-      });
+      const res = await axios.delete(
+        `http://13.232.99.215:8080/comments/${id}`,
+        {
+          headers: {
+            accessToken: localStorage.getItem("token"),
+          },
+        }
+      );
       if (res.data.success) {
         setCommentDetail(
           commentDetail.filter((val) => {
