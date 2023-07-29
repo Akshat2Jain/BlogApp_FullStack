@@ -121,10 +121,13 @@ const PostDetail = () => {
                 <>
                   <div className="comment" key={key}>
                     {comment.commentBody}
-                    <label>By: {comment.username}</label>
+                    <label className="author">By: {comment.username}</label>
                     {username === comment.username ? (
-                      <button onClick={() => handleDelete(comment.id)}>
-                        delete
+                      <button
+                        onClick={() => handleDelete(comment.id)}
+                        className="delete"
+                      >
+                        Delete Comment
                       </button>
                     ) : null}
                   </div>

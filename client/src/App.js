@@ -9,10 +9,12 @@ import { AuthContext } from "./helpers/AuthContext";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import axios from "axios";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   const [authState, setAuthState] = useState(false);
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const getUserInfo = async () => {
     try {
@@ -34,7 +36,14 @@ const App = () => {
       <BrowserRouter>
         <div className="App">
           <AuthContext.Provider
-            value={{ authState, setAuthState, username, setUsername }}
+            value={{
+              authState,
+              setAuthState,
+              username,
+              setUsername,
+              loading,
+              setLoading,
+            }}
           >
             <Navbar />
             <Routes>
@@ -57,6 +66,7 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </AuthContext.Provider>
         </div>

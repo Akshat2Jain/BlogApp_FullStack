@@ -41,6 +41,8 @@ body {
   flex: 60%;
   display: grid;
   place-content: center;
+  text-align: justify;
+  padding: 10px;
 }
 
 .post .footer {
@@ -201,14 +203,29 @@ button {
 }
 
 .listOfComments .comment {
-  width: 70%;
+  /* width: 70%; */
   height: auto;
   padding: 30px;
   border: 1px solid lightgray;
   border-radius: 5px;
   margin-top: 20px;
 }
-
+.author {
+  display: flex;
+  flex: 1;
+  margin-top: 40px;
+  margin-left: 400px;
+}
+.delete {
+  width: 500px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: dodgerblue;
+  color: white;
+}
+.delete:hover {
+  background-color: rgb(78, 124, 171);
+}
 #individual {
   height: 500px;
   width: 600px;
@@ -221,4 +238,10 @@ button {
 
 #individual .body {
   font-size: 25px;
+}
+
+/* loading */
+
+.loading {
+  margin-top: 300px;
 }
