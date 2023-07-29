@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "BlogAppDB",
-    "host": "localhost",
+    "username": "admin",
+    "password": "password",
+    "database": "mydb",
+    "host": "database-1.cp2m05j8wjx4.ap-south-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
