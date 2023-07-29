@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
-  // association posts can have many comments
+  //association
+  // each posts can have many comments
   Posts.associate = (models) => {
     Posts.hasMany(models.Comments, {
       onDelete: "cascade",

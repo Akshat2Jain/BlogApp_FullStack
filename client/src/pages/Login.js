@@ -11,7 +11,7 @@ const Login = () => {
     username: "",
     password: "",
   };
-  const { setAuthState } = useContext(AuthContext);
+  const { setAuthState, setUsername } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -22,13 +22,14 @@ const Login = () => {
   const getLoginData = async (data) => {
     try {
       const res = await axios.post("http://localhost:8080/auth/login", data);
-
       if (!res.data.success) {
         message.error(res.data.message);
       } else if (res.data.success) {
         localStorage.setItem("token", res.data.accessToken);
-        message.success(res.data.message);
+        message.success("Welcome " + res.data.username);
         setAuthState(true);
+        setUsername(res.data.username);
+
         navigate("/");
       } else {
         message.error("Some thing went wrong");

@@ -5,11 +5,13 @@ import { AuthContext } from "../helpers/AuthContext";
 import { message } from "antd";
 
 const Navbar = () => {
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { authState, setAuthState, username, setUsername } =
+    useContext(AuthContext);
 
   const handleLogout = () => {
     localStorage.clear();
     setAuthState(false);
+    setUsername("");
     message.success("Successfully Logout");
   };
   useEffect(() => {
@@ -28,7 +30,10 @@ const Navbar = () => {
         </>
       ) : (
         <>
-          <button onClick={handleLogout}>Logout</button>
+          <div className="loggedInContainer">
+            <button onClick={handleLogout}>Logout</button>
+            <h1>{username}</h1>
+          </div>
         </>
       )}
     </div>

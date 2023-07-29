@@ -121,13 +121,27 @@ p {
   text-decoration: none;
   color: white;
 }
+.navbar .loggedInContainer {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 .navbar button {
-  width: 150px;
+  width: 100px;
   height: 40px;
-  margin-left: 20px;
   cursor: pointer;
+  margin-right: 10px;
+  background-color: white;
 }
 
+.navbar h1 {
+  text-align: right;
+  margin-right: 30px;
+  color: white;
+  font-weight: lighter;
+}
 /* INDIVIDUAL POST */
 .postPage {
   display: flex;

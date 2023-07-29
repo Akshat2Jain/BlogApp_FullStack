@@ -1,15 +1,17 @@
 import { message } from "antd";
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "../App.css";
+import { AuthContext } from "../helpers/AuthContext";
 
 const PostDetail = () => {
   const { id } = useParams();
   const [postDetail, setpostDetail] = useState({});
   const [commentDetail, setCommentDetail] = useState([]);
   const [newComment, setNewCommet] = useState("");
+  const { username } = useContext(AuthContext);
   // get blog details
   const getDetails = async (id) => {
     try {
@@ -22,7 +24,7 @@ const PostDetail = () => {
       message.error("Something went wrong");
     }
   };
-  // get blog comment
+  // get perticular blog comment
   const getComment = async () => {
     try {
       const res = await axios.get(`http://localhost:8080/comments/${id}`);
@@ -67,6 +69,27 @@ const PostDetail = () => {
       message.error("Something went Wrong");
     }
   };
+
+  // delete comment
+  const handleDelete = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:8080/comments/${id}`, {
+        headers: {
+          accessToken: localStorage.getItem("token"),
+        },
+      });
+      if (res.data.success) {
+        setCommentDetail(
+          commentDetail.filter((val) => {
+            return val.id !== id;
+          })
+        );
+        message.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getDetails(id);
     getComment(id);
@@ -99,6 +122,11 @@ const PostDetail = () => {
                   <div className="comment" key={key}>
                     {comment.commentBody}
                     <label>By: {comment.username}</label>
+                    {username === comment.username ? (
+                      <button onClick={() => handleDelete(comment.id)}>
+                        delete
+                      </button>
+                    ) : null}
                   </div>
                 </>
               );

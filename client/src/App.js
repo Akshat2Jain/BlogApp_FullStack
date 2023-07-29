@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePost from "./pages/CreatePost";
@@ -7,21 +7,56 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthContext } from "./helpers/AuthContext";
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import axios from "axios";
 
 const App = () => {
   const [authState, setAuthState] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const getUserInfo = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/auth/getUserInfo", {
+        headers: {
+          accessToken: localStorage.getItem("token"),
+        },
+      });
+      setUsername(res.data.username);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getUserInfo();
+  }, []);
   return (
     <>
       <BrowserRouter>
         <div className="App">
-          <AuthContext.Provider value={{ authState, setAuthState }}>
+          <AuthContext.Provider
+            value={{ authState, setAuthState, username, setUsername }}
+          >
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/createpost" element={<CreatePost />} />
               <Route path="/post/:id" element={<PostDetail />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route
+                path="/login"
+                element={
+                  <ProtectedRoute>
+                    <Login />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <ProtectedRoute>
+                    <Register />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </AuthContext.Provider>
         </div>
