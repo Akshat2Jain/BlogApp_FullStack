@@ -130,6 +130,9 @@ p {
   justify-content: flex-end;
   align-items: center;
 }
+.navbar .loggedInContainer .myblog {
+  padding-right: 20px;
+}
 .navbar button {
   width: 100px;
   height: 40px;

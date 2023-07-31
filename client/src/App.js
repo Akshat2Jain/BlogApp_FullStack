@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import axios from "axios";
 import PageNotFound from "./components/PageNotFound";
+import MyBlog from "./pages/MyBlog";
+import PublicRoute from "./components/PublicRoute";
 
 const App = () => {
   const [authState, setAuthState] = useState(false);
@@ -67,6 +69,15 @@ const App = () => {
                   <ProtectedRoute>
                     <Register />
                   </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/myblog"
+                element={
+                  <PublicRoute>
+                    <MyBlog />
+                  </PublicRoute>
                 }
               />
               <Route path="*" element={<PageNotFound />} />

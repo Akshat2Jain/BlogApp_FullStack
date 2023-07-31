@@ -31,6 +31,9 @@ const Navbar = () => {
       ) : (
         <>
           <div className="loggedInContainer">
+            <Link to="/myblog" className="myblog">
+              My Blog
+            </Link>
             <button onClick={handleLogout}>Logout</button>
             <h1>{username}</h1>
           </div>
