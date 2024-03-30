@@ -2,7 +2,7 @@
 
 
 ## Deployment 🚀
-This project is deployed on AWS EC2 to provide a live and accessible version. You can visit the deployed application by accessing the following URL: http://13.232.99.215:3000/
+This project is deployed on AWS EC2 to provide a live and accessible version. You can visit the deployed application by accessing the following URL: http://13.232.99.215:3000/(does not work anymore)
 
 ## Project Focus 🎯
 
